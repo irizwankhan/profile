@@ -1,61 +1,25 @@
-import { getTheme, Pivot, PivotItem, Stack } from '@fluentui/react';
+import { getTheme, Icon, Link, Stack } from '@fluentui/react';
 import * as React from 'react';
-import { DumbFooter, MailForm, Pens, Projects, ShowCase } from '../../common';
-import { IPortfolio, IProjectDetails } from '../../model';
-import { getPivotShadows } from '../../styles/commonStyles';
-import { getSubPathName, scrollToTop, subTabs, tabs } from '../../utils';
+import { DumbFooter, Projects, ShowCase } from '../../common';
+import { IAbout, IPortfolio, IProjectDetails } from '../../model';
+import { card, getDropShadow, getShadows } from '../../styles/commonStyles';
+import { scrollToTop } from '../../utils';
 import portfolio from '../../data/portfolio.json';
 import projectDetails from '../../data/projectDetails.json';
+import about from '../../data/about.json';
+import main from '../../assets/img/main2.png';
 
-interface IPortfolioState {
-  selectedTab: string;
-  currentPath: string;
-}
-
-export class Portfolio extends React.Component<{}, IPortfolioState> {
+export class Portfolio extends React.Component<{}> {
   portfolio: IPortfolio;
   projectDetails: IProjectDetails[];
+  about: IAbout;
   constructor(props: {}) {
     super(props);
     scrollToTop();
-    const currentLocation = getSubPathName() ? getSubPathName() : subTabs[0];
-    this.state = {
-      selectedTab: currentLocation,
-      currentPath: currentLocation,
-    };
-    window.history.replaceState(null, '', `/${tabs[2]}/${currentLocation}`);
     this.portfolio = portfolio;
     this.projectDetails = projectDetails;
+    this.about = about;
   }
-
-  componentDidUpdate() {
-    if (getSubPathName() !== this.state.currentPath) {
-      const currentLocation = getSubPathName() ? getSubPathName() : subTabs[0];
-      this.setState({
-        selectedTab: currentLocation,
-        currentPath: currentLocation,
-      });
-    }
-  }
-
-  onTabChange = (item?: PivotItem): void => {
-    const currentTab = item?.props.itemKey as string;
-    if (this.state.selectedTab !== currentTab) {
-      this.setState({ selectedTab: currentTab, currentPath: currentTab });
-      window.history.pushState(null, '', `/${tabs[2]}/${currentTab}`);
-      window.history.replaceState(null, '', `/${tabs[2]}/${currentTab}`);
-    }
-  };
-
-  onTabChangeToPen = (): void => {
-    scrollToTop();
-    const currentTab = subTabs[1];
-    if (this.state.selectedTab !== currentTab) {
-      this.setState({ selectedTab: currentTab, currentPath: currentTab });
-      window.history.pushState(null, '', `/${tabs[2]}/${currentTab}`);
-      window.history.replaceState(null, '', `/${tabs[2]}/${currentTab}`);
-    }
-  };
 
   render(): JSX.Element {
     const theme = getTheme();
@@ -63,41 +27,30 @@ export class Portfolio extends React.Component<{}, IPortfolioState> {
     return (
       <>
         <Stack className="m-t-3">
-          <Stack.Item align="center" className="w-100 sub-pivot">
-            <Pivot
-              className={`${getPivotShadows(theme)} ms-motion-slideUpIn`}
-              selectedKey={`${this.state.selectedTab}`}
-              onLinkClick={this.onTabChange}
-            >
-              <PivotItem
-                headerText={this.portfolio.projectsText}
-                itemKey={subTabs[0]}
-                itemCount={this.projectDetails.length}
-              >
-                <Projects
-                  projectDetails={this.projectDetails}
-                  onTabChange={this.onTabChangeToPen}
+          <Stack.Item align="center" className="w-100">
+            <div className={`${card} card ${getShadows(theme)} profile`}>
+              <div className={`image-container ${getShadows(theme)}`}>
+                <img
+                  className={`${getDropShadow(theme)} detailed`}
+                  height="100px"
+                  src={main}
+                  alt="me"
                 />
-              </PivotItem>
-              <PivotItem
-                headerText={this.portfolio.pens}
-                itemKey={subTabs[1]}
-                itemCount={this.portfolio.otherPens.length + 2}
-              >
-                <Pens />
-              </PivotItem>
-            </Pivot>
+              </div>
+              <span className="m-l-2">{this.portfolio.portfolioSubheader}</span>
+            </div>
           </Stack.Item>
+          <Stack.Item className="m-b-5 view-pens p-r-1">
+            <Link className="p-r-1" href={this.about.codePen} target="_blank">
+              {'View Pens'}
+            </Link>
+            <Icon iconName="OpenInNewWindow" />
+          </Stack.Item>
+          <h1 className="work-projects">{'Projects'}</h1>
+          <Projects projectDetails={this.projectDetails} />
         </Stack>
-        <ShowCase isMinVersion />
+        <ShowCase isMinVersion isShowCase />
         <DumbFooter />
-        {!this.projectDetails.length &&
-          !(this.state.selectedTab === subTabs[1]) && (
-            <>
-              <br />
-              <MailForm />
-            </>
-          )}
       </>
     );
   }

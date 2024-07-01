@@ -3,11 +3,11 @@ import * as React from 'react';
 import Masonry from 'react-masonry-css';
 import {
   ButtonCard,
+  CodePenIcon,
   DumbFooter,
   GithubIcon,
   LinkedInIcon,
   MailForm,
-  MailIcon,
   ShowCase,
 } from '../../common';
 // import { card, getShadows } from '../../styles/commonStyles';
@@ -36,7 +36,7 @@ export class Blog extends React.Component<IBlogProps> {
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
-          <MailIcon />
+          <CodePenIcon />
           <LinkedInIcon />
           <GithubIcon />
           <ButtonCard onThemeChange={this.props.onThemeChange} />
@@ -55,7 +55,7 @@ export class Blog extends React.Component<IBlogProps> {
             alt="github contribution"
           />
         </div> */}
-        <ShowCase isMinVersion />
+        <ShowCase isMinVersion isShowCase />
         <DumbFooter />
         <br />
         <MailForm isOnLastTab />

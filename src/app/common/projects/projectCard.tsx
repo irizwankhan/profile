@@ -17,7 +17,11 @@ export class ProjectCard extends Component<IProjectCardProps> {
     const data = this.props.data as IProjectDetails;
 
     return (
-      <div className={`${card} card ${getShadows(theme)} projectCard p-1`}>
+      <div
+        className={`${card} card ${getShadows(theme)} projectCard p-5px a-d${
+          Math.floor(Math.random() * 4) + 1
+        }`}
+      >
         <div
           className={`${getImageContainerStyles(data.img)} image-container`}
         ></div>

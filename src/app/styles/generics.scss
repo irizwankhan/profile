@@ -10,6 +10,10 @@
   margin-left: 4px;
 }
 
+.m-l-2 {
+  margin-left: 8px;
+}
+
 .m-t-2 {
   margin-top: 8px !important;
 }
@@ -24,6 +28,10 @@
 
 .m-b-0 {
   margin-bottom: 0 !important;
+}
+
+.m-b-5 {
+  margin-bottom: 20px !important;
 }
 
 .d-block {
@@ -69,6 +77,10 @@
   padding-right: 0;
 }
 
+.p-r-1 {
+  padding-right: 4px;
+}
+
 .lg-p-r-0 {
   @media (max-width: 1024px-1) {
     padding-right: 0;
@@ -103,4 +115,19 @@
 
 .a-d6 {
   animation-delay: 0.3s !important;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.view-pens {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  border-bottom: 2px dotted var(--neutralTertiary);
+}
+
+.p-5px {
+  padding: 5px !important;
 }

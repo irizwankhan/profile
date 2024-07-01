@@ -4,12 +4,12 @@ import {
   ButtonCard,
   Job,
   MailForm,
-  MailIcon,
   ProfileCard,
   ShowCase,
   LinkedInIcon,
   GithubIcon,
   DumbFooter,
+  CodePenIcon,
 } from '../../common';
 import { card, getShadows } from '../../styles/commonStyles';
 import { scrollToTop } from '../../utils';
@@ -41,7 +41,7 @@ export class All extends React.Component<IAllProps> {
               <ProfileCard onTabChange={this.props.onTabChange} />
               <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-xl6 p-l-0">
                 <Job onTabChange={this.props.onTabChange} />
-                <MailIcon />
+                <CodePenIcon />
               </div>
               <div className="ms-Grid-col ms-sm6 ms-md6 ms-lg6 ms-xl6 p-r-0">
                 <ButtonCard onThemeChange={this.props.onThemeChange} />

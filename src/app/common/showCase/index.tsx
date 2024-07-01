@@ -21,6 +21,7 @@ import portfolio from '../../data/portfolio.json';
 interface IShowCaseProps {
   onTabChange?: (currentTab: string) => void;
   isMinVersion?: boolean;
+  isShowCase?: boolean;
 }
 
 interface IShowCaseState {
@@ -66,6 +67,11 @@ export class ShowCase extends React.Component<IShowCaseProps, IShowCaseState> {
               <p className="sub-text">{this.common.worksSubheader}</p>
             </StackItem>
           </Stack>
+        )}
+        {this.props.isShowCase && (
+          <h2 className="little-showcase">
+            {'A little show case never hurts...'}
+          </h2>
         )}
         <SlidEr
           incrementor={0.2}

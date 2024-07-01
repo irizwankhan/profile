@@ -47,9 +47,7 @@ export class ProfileCard extends React.Component<IProfileCardProps> {
       <div
         className={`${card} card ${getShadows(
           theme
-        )} profile ${getExternalLinkStyles(theme)} ${
-          this.props.hideFooter ? 'a-d4' : ''
-        }`}
+        )} profile ${getExternalLinkStyles(theme)}`}
       >
         <div className={`image-container ${getShadows(theme)}`}>
           <img
@@ -63,7 +61,7 @@ export class ProfileCard extends React.Component<IProfileCardProps> {
         </div>
         {this.props.hideFooter && (
           <>
-            <span className="m-l-1">
+            <span className="m-l-2">
               {<TextRenderer data={this.about.about[0]}></TextRenderer>}
             </span>
             <p>
@@ -98,7 +96,7 @@ export class ProfileCard extends React.Component<IProfileCardProps> {
                 </span>
               </span>
             </div>
-            <Text className="m-l-1">
+            <Text className="m-l-2">
               <TextRenderer data={this.about.aboutSummary[0]}></TextRenderer>
             </Text>
             <Text className="name">{this.about.maidenName}</Text>

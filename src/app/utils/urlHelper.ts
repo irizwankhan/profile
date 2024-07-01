@@ -1,5 +1,15 @@
-export const tabs = ['all', 'about', 'works', 'blog'];
+export const tabs = ['all', 'about', 'works', 'misc'];
 export const subTabs = ['projects', 'pens'];
+export const audioFiles = [
+  '1.mp3',
+  '2.mp3',
+  '3.mp3',
+  '4.mp3',
+  '5.mp3',
+  '6.mp3',
+  '7.mp3',
+  '8.mp3',
+];
 
 export const getPathName = (): string => {
   let location = window.location.pathname?.split('/')?.[1];

@@ -19,3 +19,88 @@
     width: 100%;
   }
 }
+
+.work-projects,
+.little-showcase {
+  @extend .decorated-text;
+  font-size: 32px;
+  margin-bottom: 0;
+  padding-left: 2px;
+}
+
+.little-showcase {
+  margin-top: 12px;
+  font-size: 28px;
+  padding-left: 12px;
+}
+
+.wave-wrapper {
+  position: absolute;
+  cursor: pointer;
+  height: 18px;
+  width: 42px;
+  margin-top: 18px;
+  margin-left: 132px;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+.wave-line {
+  display: block;
+  bottom: 0px;
+  width: 4px;
+  height: 16px;
+  position: absolute;
+  -webkit-animation: wave 1s infinite ease paused;
+  animation: wave 1s infinite ease paused;
+  background: rgb(0, 0, 0);
+  border: 1px solid rgb(252, 246, 244);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border-radius: 4px;
+  animation-play-state: paused;
+}
+.wave-line:nth-child(2) {
+  left: 9px;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.wave-line:nth-child(3) {
+  left: 18px;
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.wave-line:nth-child(4) {
+  left: 27px;
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+.wave-line:nth-child(5) {
+  left: 36px;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+@keyframes wave {
+  0% {
+    height: 16px;
+  }
+  50% {
+    height: 32px;
+    transform: translateY(8px);
+  }
+  100% {
+    height: 16px;
+  }
+}
+@keyframes wave-baseline {
+  0% {
+    height: 16px;
+  }
+  50% {
+    height: 32px;
+  }
+  100% {
+    height: 16px;
+  }
+}
+.d-none {
+  display: none;
+}

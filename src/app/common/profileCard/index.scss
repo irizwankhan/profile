@@ -4,6 +4,8 @@
   display: block !important;
   padding-top: 60px !important;
   margin-top: 40px;
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
   .name {
     @extend .decorated-text;
     line-height: 14px;
@@ -23,7 +25,7 @@
     }
     .detailed {
       height: 116px;
-      margin-top: -20px;
+      margin-top: -16px;
     }
   }
   .plutonic {

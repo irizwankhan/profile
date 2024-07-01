@@ -5,6 +5,7 @@ export interface IAbout {
   github: string;
   linkedIn: string;
   blog: string;
+  codePen: string;
   email: string;
   about: string[];
   aboutSummary: string[];
